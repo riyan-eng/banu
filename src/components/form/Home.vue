@@ -13,6 +13,7 @@
             <Button class="my-2" label="Submit" type="submit" />
 
         </form>
+        <Toast />        
 
     </div>
 </template>
@@ -23,11 +24,21 @@ import InputNumber from 'primevue/inputnumber';
 import Dropdown from 'primevue/dropdown';
 import Button from 'primevue/button';
 import { ref } from "vue";
+import { useRouter} from "vue-router"
 import axios from 'axios'
+import Toast from 'primevue/toast';
+import { useToast } from "primevue/usetoast";
+
+const toast = useToast();
+const router = useRouter();
+
+const show = () => {
+    toast.add({ severity: 'info', summary: 'Sukses', detail: 'Berhasil menambahkan data', life: 3000 });
+};
 
 const reqBody = ref({
     name: "",
-    age: 0,
+    age: null,
     gender: null,
 });
 
@@ -38,26 +49,10 @@ const genders = ref([
 
 async function handleSubmit() {
     try {
-        // console.log("halo")
-        // console.log(reqBody.value.name)
-        // console.log(reqBody.value.age)
-        // console.log(reqBody.value.gender)
-        console.log(reqBody);
         const url = 'http://localhost:3000/users'
-        // const fetcher = await fetch(url, {
-        //     method: 'post',
-        //     body: {
-        //         "id": 95,
-        //         "name": "banynay",
-        //         "age": 3,
-        //         "gender": null
-        //     }
-            
-            
-        // })
         const fetcher = await axios.post(url, reqBody.value)
-        // const response = await fetcher.json()
-        console.log(fetcher)
+        router.push('/bantuan')
+        show()
     } catch (error) {
         console.log(error)
     }

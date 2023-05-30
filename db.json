@@ -1,27 +1,5 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "name": "banu",
-      "age": 9,
-      "gender": "L"
-    },
-    {
-      "id": 2,
-      "name": "bayu",
-      "age": 11,
-      "gender": "L"
-    },
-    {
-      "name": "banana",
-      "age": 5,
-      "gender": {
-        "name": "Perempuan",
-        "code": "P"
-      },
-      "id": 3
-    }
-  ],
+  "users": [],
   "posts": [
     {
       "id": 1,
