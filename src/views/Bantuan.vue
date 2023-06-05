@@ -20,23 +20,39 @@
             </tr>
         </tbody>
     </table>
+    <Paginator :rows="5" :totalRecords="10" :rowsPerPageOptions="[5, 10, 20, 30]"></Paginator>
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import { onMounted, ref } from 'vue'
 import axios from 'axios';
+import Paginator from 'primevue/paginator';
+
+onMounted(() => {
+    getData()
+})
 
 const users = ref(null);
 const url = 'http://localhost:3000/users'
-fetch(url).then(response => response.json()).then(
-    function(data) {
-        console.log(data);
-        users.value = data
-    }
-)
+const perPage = ref(1)
+
+console.log("halo");
+console.log(perPage.value)
+
+async function getData() {
+    fetch(url).then(response => response.json()).then(
+        function (data) {
+            console.log(data);
+            users.value = data
+        }
+    )
+}
+
+
 async function hapus(id) {
     console.log(id)
     const fetcher = await axios.delete(`${url}/${id}`)
     console.log(fetcher)
+    getData()
 }
 </script>

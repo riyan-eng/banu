@@ -1,5 +1,15 @@
 {
-  "users": [],
+  "users": [
+    {
+      "name": "bayu",
+      "age": 12,
+      "gender": {
+        "name": "Laki-laki",
+        "code": "L"
+      },
+      "id": 1
+    }
+  ],
   "posts": [
     {
       "id": 1,
